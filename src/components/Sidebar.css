@@ -5,7 +5,7 @@
     width: 290px;
     background-color: #e8e8e8;
     margin-right: 20px;
-    transition-duration: 400ms;
+    transition-duration: 250ms;
 }
 
 .sidebar-header {
@@ -30,6 +30,17 @@
 
 .sidebar-content li {
     margin-bottom: 16px;
+}
+
+.sidebar-content li a:hover {
+    transition-duration: 150ms;
+    color: #04B8A8;
+    font-size: 24px;
+}
+
+.sidebar-content li .active {
+    color: #04B8A8 !important;
+    font-size: 24px !important;
 }
 
 .sidebar-content .links {

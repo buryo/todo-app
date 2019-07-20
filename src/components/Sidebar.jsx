@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Sidebar.css';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 const Sidebar = () => {
@@ -21,19 +21,19 @@ const Sidebar = () => {
         if (sidebarMinimzed) {
             return (
                 <ul style={{ paddingLeft: '0', textAlign: 'center' }}>
-                    <li><Link to="/new-task">-</Link></li>
-                    <li><Link to="/today">-</Link></li>
-                    <li><Link to="/all-todos">-</Link></li>
-                    <li><Link to="/planned-todos">-</Link></li>
+                    <li><NavLink to="/new-task" activeClassName="active">-</NavLink></li>
+                    <li><NavLink to="/today" activeClassName="active">-</NavLink></li>
+                    <li><NavLink to="/all-todos" activeClassName="active">-</NavLink></li>
+                    <li><NavLink to="/planned-todos" activeClassName="active">-</NavLink></li>
                 </ul>
             )
         } else {
             return (
                 <ul>
-                    <li><Link to="/new-task">- New Task</Link></li>
-                    <li><Link to="/today">- Today</Link></li>
-                    <li><Link to="/all-todos">- All Todo's</Link></li>
-                    <li><Link to="/planned-todos">- Planned</Link></li>
+                    <li><NavLink to="/new-task" activeClassName="active">- New Task</NavLink></li>
+                    <li><NavLink to="/today" activeClassName="active">- Today</NavLink></li>
+                    <li><NavLink to="/all-todos" activeClassName="active">- All Todo's</NavLink></li>
+                    <li><NavLink to="/planned-todos" activeClassName="active">- Planned</NavLink></li>
                 </ul>
             );
         }
