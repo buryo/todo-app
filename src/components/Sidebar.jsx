@@ -1,28 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Sidebar.css';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTasks, faPlus, faSun, faCalendarDay } from '@fortawesome/free-solid-svg-icons'
 
-export default class Sidebar extends React.Component {
+const Sidebar = () => {
+    const [sidebarMinimzed, setSidebarMinimzed] = useState(false);
 
-    render() {
-        return(
-            <div className="sidebar">
-                <div className="sidebar-header">
-                    <div>Todo App</div>
-                </div>
-                <div className="sidebar-content">
-                    <ul>
-                        <li><Link to="/new-task">- New Task</Link></li>
-                        <li><Link to="/today">- Today</Link></li>
-                        <li><Link to="/all-todos">- All Todo's</Link></li>
-                        <li><Link to="/planned-todos">- Planned</Link></li>
-                    </ul>
-                </div>
-                <div className="sidebar-footer">
+    // The style when it's minimized
+    const sidebarMinimizedStyle = {
+        width: '64px',
+    }
 
+    // Sidebar handler
+    const sidebarHandler = () => {
+        setSidebarMinimzed(!sidebarMinimzed);
+    }
+
+    const sidebarLeft = () => {
+        if (sidebarMinimzed) {
+            return (
+                <ul style={{ paddingLeft: '0', textAlign: 'center' }}>
+                    <li><NavLink to="/new-task" activeClassName="active"><FontAwesomeIcon icon={faPlus} /></NavLink></li>
+                    <li><NavLink to="/today" activeClassName="active"><FontAwesomeIcon icon={faSun} /></NavLink></li>
+                    <li><NavLink to="/all-todos" activeClassName="active"><FontAwesomeIcon icon={faTasks} /></NavLink></li>
+                    <li><NavLink to="/planned-todos" activeClassName="active"><FontAwesomeIcon icon={faCalendarDay} /></NavLink></li>
+                </ul>
+            )
+        } else {
+            return (
+                <ul>
+                    <li><NavLink to="/new-task" activeClassName="active"><FontAwesomeIcon icon={faPlus} /> New Todo</NavLink></li>
+                    <li><NavLink to="/today" activeClassName="active"><FontAwesomeIcon icon={faSun} /> Today</NavLink></li>
+                    <li><NavLink to="/all-todos" activeClassName="active"><FontAwesomeIcon icon={faTasks} /> All Todo's</NavLink></li>
+                    <li><NavLink to="/planned-todos" activeClassName="active"><FontAwesomeIcon icon={faCalendarDay} /> Planned</NavLink></li>
+                </ul>
+            );
+        }
+    }
+
+    return (
+        <div className="sidebar" style={sidebarMinimzed ? sidebarMinimizedStyle : {}}>
+            <div className="sidebar-header">
+                <div>{sidebarMinimzed ? '' : 'Todo App'}</div>
+            </div>
+            <div className="sidebar-content">
+                {sidebarLeft()}
+            </div>
+            <div className="sidebar-footer" onClick={sidebarHandler}>
+                <div>
+                    {sidebarMinimzed ? '»' : '«'}
                 </div>
             </div>
-        );
-    }
+        </div>
+    );
 }
+
+export default Sidebar;
