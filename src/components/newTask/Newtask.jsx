@@ -26,6 +26,7 @@ const Newtask = () => {
 
   return (
     <div>
+    <h1>Enter your todo</h1>
       <Form
         onSubmit={text => setTodos([{ text, complete: false }, ...todos])}
       />
