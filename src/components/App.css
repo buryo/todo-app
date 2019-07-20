@@ -1,3 +1,23 @@
-body{
-    background-color: red;
+html,
+body {
+    font-family: 'Indie Flower', cursive;
+    height: 100%;
+    margin: 0px;
+    background-color: #ffffff;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none !important;
+    color: #3f3f3f;
+}
+
+li {
+    list-style-type: none;
+}
+
+.App {
+    display: flex;
+    width: 100%;
+    height: 100%;
 }
