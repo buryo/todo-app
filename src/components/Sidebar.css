@@ -6,6 +6,10 @@
     background-color: #e8e8e8;
     margin-right: 20px;
     transition-duration: 250ms;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .sidebar-header {
@@ -30,6 +34,11 @@
 
 .sidebar-content li {
     margin-bottom: 16px;
+    display: flex;
+}
+
+.sidebar-content li a {
+    width: 100%;
 }
 
 .sidebar-content li a:hover {

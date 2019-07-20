@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './Sidebar.css';
 import { NavLink } from "react-router-dom";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTasks, faPlus, faSun, faCalendarDay } from '@fortawesome/free-solid-svg-icons'
 
 const Sidebar = () => {
     const [sidebarMinimzed, setSidebarMinimzed] = useState(false);
@@ -14,26 +16,25 @@ const Sidebar = () => {
     // Sidebar handler
     const sidebarHandler = () => {
         setSidebarMinimzed(!sidebarMinimzed);
-        console.log(sidebarMinimzed);
     }
 
     const sidebarLeft = () => {
         if (sidebarMinimzed) {
             return (
                 <ul style={{ paddingLeft: '0', textAlign: 'center' }}>
-                    <li><NavLink to="/new-task" activeClassName="active">-</NavLink></li>
-                    <li><NavLink to="/today" activeClassName="active">-</NavLink></li>
-                    <li><NavLink to="/all-todos" activeClassName="active">-</NavLink></li>
-                    <li><NavLink to="/planned-todos" activeClassName="active">-</NavLink></li>
+                    <li><NavLink to="/new-task" activeClassName="active"><FontAwesomeIcon icon={faPlus} /></NavLink></li>
+                    <li><NavLink to="/today" activeClassName="active"><FontAwesomeIcon icon={faSun} /></NavLink></li>
+                    <li><NavLink to="/all-todos" activeClassName="active"><FontAwesomeIcon icon={faTasks} /></NavLink></li>
+                    <li><NavLink to="/planned-todos" activeClassName="active"><FontAwesomeIcon icon={faCalendarDay} /></NavLink></li>
                 </ul>
             )
         } else {
             return (
                 <ul>
-                    <li><NavLink to="/new-task" activeClassName="active">- New Task</NavLink></li>
-                    <li><NavLink to="/today" activeClassName="active">- Today</NavLink></li>
-                    <li><NavLink to="/all-todos" activeClassName="active">- All Todo's</NavLink></li>
-                    <li><NavLink to="/planned-todos" activeClassName="active">- Planned</NavLink></li>
+                    <li><NavLink to="/new-task" activeClassName="active"><FontAwesomeIcon icon={faPlus} /> New Todo</NavLink></li>
+                    <li><NavLink to="/today" activeClassName="active"><FontAwesomeIcon icon={faSun} /> Today</NavLink></li>
+                    <li><NavLink to="/all-todos" activeClassName="active"><FontAwesomeIcon icon={faTasks} /> All Todo's</NavLink></li>
+                    <li><NavLink to="/planned-todos" activeClassName="active"><FontAwesomeIcon icon={faCalendarDay} /> Planned</NavLink></li>
                 </ul>
             );
         }
