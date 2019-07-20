@@ -3,7 +3,7 @@ import './newtask.css';
 
 import Form from "./Form";
 
- const Newtask = () => {
+const Newtask = () => {
   const [todos, setTodos] = useState([]);
 
   const toggleComplete = i =>
@@ -12,20 +12,20 @@ import Form from "./Form";
         (todo, k) =>
           k === i
             ? {
-                ...todo,
-                complete: !todo.complete
-              }
+              ...todo,
+              complete: !todo.complete
+            }
             : todo
       )
     );
 
-    const handleFormSubmit = () => {
-        localStorage.setItem('Todos', todos);
-        localStorage.setItem('newtodo', setTodos);
-      };
+  const handleFormSubmit = () => {
+    localStorage.setItem('Todos', todos);
+    localStorage.setItem('newtodo', setTodos);
+  };
 
   return (
-    <div className="App">
+    <div>
       <Form
         onSubmit={text => setTodos([{ text, complete: false }, ...todos])}
       />

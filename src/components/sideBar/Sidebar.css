@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    height: 100%;
     width: 290px;
     background-color: #e8e8e8;
     margin-right: 20px;
@@ -21,10 +22,12 @@
     font-weight: bold;
     height: 48px;
     text-align: center;
+    overflow: hidden;
 }
 
 .sidebar-header div {
     margin: auto;
+    cursor: pointer;
 }
 
 .sidebar-content {
@@ -42,7 +45,7 @@
 }
 
 .sidebar-content li a:hover {
-    transition-duration: 150ms;
+    transition-duration: 250ms;
     color: #04B8A8;
     font-size: 24px;
 }
@@ -50,6 +53,7 @@
 .sidebar-content li .active {
     color: #04B8A8 !important;
     font-size: 24px !important;
+    box-shadow: 0 17px 0 -16px #04b8a8;
 }
 
 .sidebar-content .links {

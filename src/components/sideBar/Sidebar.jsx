@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Sidebar.css';
 import { NavLink } from "react-router-dom";
+import AppName from './AppName';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTasks, faPlus, faSun, faCalendarDay } from '@fortawesome/free-solid-svg-icons'
@@ -43,7 +44,7 @@ const Sidebar = () => {
     return (
         <div className="sidebar" style={sidebarMinimzed ? sidebarMinimizedStyle : {}}>
             <div className="sidebar-header">
-                <div>{sidebarMinimzed ? '' : 'Todo App'}</div>
+                <div>{sidebarMinimzed ? '' : AppName()}</div>
             </div>
             <div className="sidebar-content">
                 {sidebarLeft()}
