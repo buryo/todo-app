@@ -44,7 +44,7 @@ const Sidebar = () => {
     return (
         <div className="sidebar" style={sidebarMinimzed ? sidebarMinimizedStyle : {}}>
             <div className="sidebar-header">
-                <div>{sidebarMinimzed ? '' : AppName()}</div>
+                <div>{sidebarMinimzed ? '' : <AppName/>}</div>
             </div>
             <div className="sidebar-content">
                 {sidebarLeft()}
