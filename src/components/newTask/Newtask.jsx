@@ -19,6 +19,11 @@ import Form from "./Form";
       )
     );
 
+    const handleFormSubmit = () => {
+        localStorage.setItem('Todos', todos);
+        localStorage.setItem('newtodo', setTodos);
+      };
+
   return (
     <div className="App">
       <Form
