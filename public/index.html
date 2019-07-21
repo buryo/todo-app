@@ -20,7 +20,11 @@
 
 <script>
     const appTitle = localStorage.getItem('appName');
-    document.querySelector('#app-title').innerHTML = appTitle.replace(/./, x => x.toUpperCase());
+    if (appTitle !== null) {
+        document.querySelector('#app-title').innerHTML = appTitle.replace(/./, x => x.toUpperCase());
+    } else {
+        document.querySelector('#app-title').innerHTML = 'Todo App'
+    }
 </script>
 
 </html>

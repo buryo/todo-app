@@ -11,7 +11,7 @@ const AppName = () => {
     }
 
     const handleEnter = (e) => {
-        if (e.key === 'Enter') {
+        if (e !== undefined && e.key === 'Enter') {
             // Make first letter uppercase (When autism kicks in..)
             const appName = e.target.value.replace(/./, x => x.toUpperCase());;
 

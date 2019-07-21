@@ -3,6 +3,7 @@ import './App.css';
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Sidebar from './sideBar/Sidebar.jsx';
+import AllTodos from './allTodos/AllTodos.jsx';
 import Example from './Test';
 import Newtask from './newTask/Newtask';
 
@@ -14,7 +15,9 @@ class App extends React.Component {
           <Sidebar />
           
           <Route path="/" exact />
-          <Route path="/new-task" component={Newtask}/>
+          <Route path="/new-todo" component={Newtask}/>
+          <Route path="/today" component={AllTodos}/>
+          <Route path="/all-todos" component={AllTodos}/>
           <Route path="/example" component={Example}/>
         </div>
       </Router>

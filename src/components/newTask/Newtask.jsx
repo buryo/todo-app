@@ -1,50 +1,52 @@
 import React, { useState } from "react";
+import { DatePicker, Input, Button } from 'antd';
 import './newtask.css';
 
-import Form from "./Form";
-
 const Newtask = () => {
-  const [todos, setTodos] = useState([]);
+  // Putting existing todo's into the state
+  const localStorageTodos = JSON.parse(localStorage.getItem('Todos')) ? JSON.parse(localStorage.getItem('Todos')) : '';
+  const [todos, setTodos] = useState([...localStorageTodos]);
 
-  const toggleComplete = i =>
-    setTodos(
-      todos.map(
-        (todo, k) =>
-          k === i
-            ? {
-              ...todo,
-              complete: !todo.complete
-            }
-            : todo
-      )
-    );
+  const [todoTitle, setTodoTitle] = useState('');
+  const [todoDate, setTodoDate] = useState('');
 
-  const handleFormSubmit = () => {
-    localStorage.setItem('Todos', todos);
-    localStorage.setItem('newtodo', setTodos);
+  // This realdate is needed for the DatePick of Ant Design
+  const [realDate, setRealDate] = useState(null);
+
+  const handleSubmit = () => {
+    // basic validation
+    if (todoTitle.length > 0 && todoDate !== null) {
+      const newTodo = {
+        title: todoTitle,
+        completed: false,
+        date: todoDate,
+      }
+
+      setTodos([newTodo, ...todos])
+      localStorage.setItem('Todos', JSON.stringify([newTodo, ...todos]));
+      setTodoTitle('');
+      setTodoDate(null);
+      setRealDate(null);
+    }
   };
 
+  const onInputChange = (e) => {
+    setTodoTitle(e.target.value);
+  }
+
+  const onDateChange = (date, dateString) => {
+    setRealDate(date)
+    setTodoDate(dateString);
+  }
+
   return (
-    <div>
-    <h1>Enter your todo</h1>
-      <Form
-        onSubmit={text => setTodos([{ text, complete: false }, ...todos])}
-      />
-      <div>
-        {todos.map(({ text, complete }, i) => (
-          <div
-            key={text}
-            onClick={() => toggleComplete(i)}
-            style={{
-              textDecoration: complete ? "line-through" : ""
-            }}
-          >
-            {text}
-          </div>
-        ))}
-      </div>
-      {/* The button to setState to null */}
-      {/* <button onClick={() => setTodos([])}>reset</button> */}
+    <div id="new-todo-content">
+      <h1>Enter your todo</h1>
+
+      <Input id="form-input" name="todo-titel" value={todoTitle} placeholder="Todo" onChange={onInputChange} /> <br />
+      <DatePicker id="form-input" onChange={onDateChange} value={realDate} format={"YYYY-MM-DD"} /> <br />
+      <Button type="primary" onClick={handleSubmit}>Create</Button>
+
     </div>
   );
 };

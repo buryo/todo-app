@@ -23,7 +23,7 @@ const Sidebar = () => {
         if (sidebarMinimzed) {
             return (
                 <ul style={{ paddingLeft: '0', textAlign: 'center' }}>
-                    <li><NavLink to="/new-task" activeClassName="active"><FontAwesomeIcon icon={faPlus} /></NavLink></li>
+                    <li><NavLink to="/new-todo" activeClassName="active"><FontAwesomeIcon icon={faPlus} /></NavLink></li>
                     <li><NavLink to="/today" activeClassName="active"><FontAwesomeIcon icon={faSun} /></NavLink></li>
                     <li><NavLink to="/all-todos" activeClassName="active"><FontAwesomeIcon icon={faTasks} /></NavLink></li>
                     <li><NavLink to="/planned-todos" activeClassName="active"><FontAwesomeIcon icon={faCalendarDay} /></NavLink></li>
@@ -32,7 +32,7 @@ const Sidebar = () => {
         } else {
             return (
                 <ul>
-                    <li><NavLink to="/new-task" activeClassName="active"><FontAwesomeIcon icon={faPlus} /> New Todo</NavLink></li>
+                    <li><NavLink to="/new-todo" activeClassName="active"><FontAwesomeIcon icon={faPlus} /> New Todo</NavLink></li>
                     <li><NavLink to="/today" activeClassName="active"><FontAwesomeIcon icon={faSun} /> Today</NavLink></li>
                     <li><NavLink to="/all-todos" activeClassName="active"><FontAwesomeIcon icon={faTasks} /> All Todo's</NavLink></li>
                     <li><NavLink to="/planned-todos" activeClassName="active"><FontAwesomeIcon icon={faCalendarDay} /> Planned</NavLink></li>
