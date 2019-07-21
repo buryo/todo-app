@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { DatePicker, Input, Button } from 'antd';
-import './newtask.css';
+import { DatePicker, Input, Button } from "antd";
+import "./newtask.css";
 
 const Newtask = () => {
   // Putting existing todo's into the state
-  const localStorageTodos = JSON.parse(localStorage.getItem('Todos')) || '';
+  const localStorageTodos = JSON.parse(localStorage.getItem("Todos")) || "";
   const [todos, setTodos] = useState([...localStorageTodos]);
 
-  const [todoTitle, setTodoTitle] = useState('');
-  const [todoDate, setTodoDate] = useState('');
+  const [todoTitle, setTodoTitle] = useState("");
+  const [todoDate, setTodoDate] = useState("");
 
   // This realdate is needed for the DatePick of Ant Design
   const [realDate, setRealDate] = useState(null);
@@ -18,8 +18,10 @@ const Newtask = () => {
     if (todoTitle.length > 0 && todoDate !== null) {
       let lastTodo = {};
       if (todos.length > 0) {
-        lastTodo = todos.reduce((prev, current) => (prev.id > current.id) ? prev : current);
-      }else{
+        lastTodo = todos.reduce((prev, current) =>
+          prev.id > current.id ? prev : current
+        );
+      } else {
         lastTodo.id = 0;
       }
       // Get last Todo's ID
@@ -31,33 +33,53 @@ const Newtask = () => {
         date: todoDate,
       }
 
-      setTodos([newTodo, ...todos])
-      localStorage.setItem('Todos', JSON.stringify([newTodo, ...todos]));
-      setTodoTitle('');
+      setTodos([newTodo, ...todos]);
+      localStorage.setItem("Todos", JSON.stringify([newTodo, ...todos]));
+      setTodoTitle("");
       setTodoDate(null);
       setRealDate(null);
-    }else{
+    } else {
       // TODO: Inform the client about validation
     }
   };
 
-  const onInputChange = (e) => {
+  const onInputChange = e => {
     setTodoTitle(e.target.value);
-  }
+  };
 
   const onDateChange = (date, dateString) => {
-    setRealDate(date)
+    setRealDate(date);
     setTodoDate(dateString);
-  }
+  };
 
   return (
     <main id="new-todo-content">
-      <h1>Enter your todo</h1>
+    
+    <div style="width: 100%; height: 0px; position: relative; padding-bottom: 56.250%;"><iframe src="https://streamable.com/s/gwmh5/zboqff" frameborder="0" width="100%" height="100%" allowfullscreen style="width: 100%; height: 100%; position: absolute;"></iframe></div>
 
-      <Input id="form-input" name="todo-titel" value={todoTitle} placeholder="Todo" onChange={onInputChange} /> <br />
-      <DatePicker id="form-input" onChange={onDateChange} value={realDate} format={"YYYY-MM-DD"} /> <br />
-      <Button type="primary" onClick={handleSubmit}>Create</Button>
-
+      <h1>Let's do this</h1>
+      <Input
+        id="form-input"
+        name="todo-titel"
+        value={todoTitle}
+        placeholder="Todo"
+        onChange={onInputChange}
+      />{" "}
+      <br />
+      <DatePicker
+        className="datepicker"
+        id="form-input"
+        onChange={onDateChange}
+        value={realDate}
+        format={"YYYY-MM-DD"}
+      />
+      <Button
+        className="datepicker-button"
+        type="primary"
+        onClick={handleSubmit}
+      >
+        Create
+      </Button>
     </main>
   );
 };
