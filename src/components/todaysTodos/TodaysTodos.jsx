@@ -1,14 +1,56 @@
 import React, { useState } from "react";
-import { Icon, Button } from "antd";
-import "./alltodos.css";
+import { Icon, Table, Button } from "antd";
 
-const AllTodos = () => {
+const TodaysTodos = () => {
     const allLocalTodos = JSON.parse(localStorage.getItem("Todos")) || '';
     const [todos, setTodos] = useState([...allLocalTodos]);
 
     const handleDelete = () => {
         todos(null)
     }
+
+    const data = [
+        {
+            key: '1',
+            todo: 'Bring dog outside',
+            date: '2019-07-02',
+            complete: 'No',
+        },
+        {
+            key: '2',
+            todo: 'Bring dog outside',
+            date: '2019-07-02',
+            complete: 'No',
+        },
+        {
+            key: '3',
+            todo: 'Bring dog outside',
+            date: '2019-07-02',
+            complete: 'No',
+        },
+        {
+            key: '4',
+            todo: 'Bring dog outside',
+            date: '2019-07-02',
+            complete: 'No',
+        },
+    ];
+
+    const columns = [
+        {
+            title: 'Todo',
+            dataIndex: 'todo',
+        },
+        {
+            title: 'Date',
+            dataIndex: 'date',
+        },
+        {
+            title: 'Complete',
+            dataIndex: 'complete',
+        },
+    ];
+
     return (
         <div>
             {todos.map(({ title, complete, date }, i) => (
@@ -21,10 +63,8 @@ const AllTodos = () => {
                 >
                     {`${title} - Date: ${date}`}
 
-                    {/* the check and delete icon with link */}
                     <a href="/">
                         <Icon
-                            // style={{ paddingLeft: "3em" }}
                             type="check-circle"
                             theme="twoTone"
                             twoToneColor="#52c41a"
@@ -32,7 +72,6 @@ const AllTodos = () => {
                     </a>
 
                     <Icon
-                        // style={{ marginRight: "3em" }}
                         type="delete"
                         theme="twoTone"
                         twoToneColor="#ff0000"
@@ -40,8 +79,10 @@ const AllTodos = () => {
                     />
                 </div>
             ))}
+
+            <Table columns={columns} dataSource={data} />
         </div>
     );
 };
 
-export default AllTodos;
+export default TodaysTodos;

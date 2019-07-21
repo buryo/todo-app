@@ -4,7 +4,7 @@ import './newtask.css';
 
 const Newtask = () => {
   // Putting existing todo's into the state
-  const localStorageTodos = JSON.parse(localStorage.getItem('Todos')) ? JSON.parse(localStorage.getItem('Todos')) : '';
+  const localStorageTodos = JSON.parse(localStorage.getItem('Todos')) || '';
   const [todos, setTodos] = useState([...localStorageTodos]);
 
   const [todoTitle, setTodoTitle] = useState('');
