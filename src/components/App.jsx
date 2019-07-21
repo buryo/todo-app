@@ -7,6 +7,7 @@ import AllTodos from './allTodos/AllTodos';
 import Example from './Test';
 import Newtask from './newTodo/Newtask';
 import TodaysTodos from './todaysTodos/TodaysTodos';
+import PlannedTodos from './plannedTodos/PlannedTodos';
 import { createEmptyTodos } from './HelperFunctions';
 
 
@@ -23,7 +24,7 @@ class App extends React.Component {
           <Route path="/new-todo" component={Newtask} />
           <Route path="/today" component={TodaysTodos} />
           <Route path="/all-todos" component={AllTodos} />
-          <Route path="/example" component={Example} />
+          <Route path="/planned-todos" component={PlannedTodos} />
         </div>
       </Router>
     );
