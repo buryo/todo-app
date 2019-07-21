@@ -1,30 +1,16 @@
 import React, { useState } from "react";
 import { Icon, Table } from "antd";
-import { todoDeleter } from "../HelperFunctions";
+import { todoDeleter, todoApprover, todoEditor, orderByAscending } from "../HelperFunctions";
 import "./todaysTodos.css";
 
 const TodaysTodos = () => {
     const allLocalTodos = JSON.parse(localStorage.getItem("Todos")) || '';
 
-    const todaysTodos = allLocalTodos.filter(todos => todos.date === new Date().toISOString().split('T')[0]) || '';
+    const todaysTodos = allLocalTodos.filter(todos => todos.date === (new Date().toISOString().split('T')[0])) || '';
     const [todos, setTodos] = useState([...todaysTodos]);
 
-    // Example data structure
-    // const data = [
-    //     {
-    //         key: '1',
-    //         todo: 'Bring dog outside',
-    //         date: '2019-07-02',
-    //         complete: 'No',
-    //     },
-    //     {
-    //         key: '2',
-    //         todo: 'Bring dog outside',
-    //         date: '2019-07-02',
-    //         complete: 'No',
-    //     },
-    // ];
-
+    // Deleting a note.
+    // Adding className='deleting' to the node for animation
     const deleteHandler = (e, id) => {
         e.currentTarget.parentNode.parentNode.classList.add('deleting');
         setTimeout(function () { setTodos(todoDeleter(id)); }, 500);
@@ -46,14 +32,14 @@ const TodaysTodos = () => {
             render: (text, record) =>
                 <>
                     <Icon
-                        onClick={(e) => deleteHandler(e, record.id)}
+                        onClick={() => setTodos(todoApprover(record.id))}
                         id="icon-complete"
                         type="check-circle"
                         theme="twoTone"
                         twoToneColor="#52c41a"
                     />
                     <Icon
-                        onClick={(e) => deleteHandler(e, record.id)}
+                        onClick={() => setTodos(todoEditor(record.id))}
                         id="icon-edit"
                         type="edit"
                         theme="twoTone"
@@ -73,7 +59,12 @@ const TodaysTodos = () => {
 
     return (
         <main>
-            <Table rowClassName={ (record, index) => { return record.completed ? 'task-done' : '' }   } pagination={{ defaultPageSize: 10 }} rowKey="id" columns={columns} dataSource={todos} />
+            <Table 
+                rowClassName={(record, index) => { return record.completed ? 'task-done' : '' }} 
+                pagination={{ defaultPageSize: 10 }} 
+                rowKey="id" 
+                columns={columns} 
+                dataSource={todos} />
         </main>
     );
 };

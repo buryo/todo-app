@@ -24,6 +24,7 @@
     height: 48px;
     text-align: center;
     overflow: hidden;
+    margin-bottom: 18px;
 }
 
 .sidebar-header div {
