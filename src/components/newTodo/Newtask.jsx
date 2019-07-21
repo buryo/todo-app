@@ -54,9 +54,6 @@ const Newtask = () => {
 
   return (
     <main id="new-todo-content">
-    
-    <div style="width: 100%; height: 0px; position: relative; padding-bottom: 56.250%;"><iframe src="https://streamable.com/s/gwmh5/zboqff" frameborder="0" width="100%" height="100%" allowfullscreen style="width: 100%; height: 100%; position: absolute;"></iframe></div>
-
       <h1>Let's do this</h1>
       <Input
         id="form-input"

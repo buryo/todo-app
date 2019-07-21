@@ -47,3 +47,7 @@ export const orderByAscending = (array, property) => {
 export const orderByDescending = (array, property) => {
     return array.sort((a, b) => (a[property] > b[property]) ? -1 : ((b[property] > a[property]) ? 1 : 0));
 }
+
+export const onlyGetTodosForToday = (todos) => {
+    return todos.filter(todo => todo.date === (new Date().toISOString().split('T')[0]))
+}

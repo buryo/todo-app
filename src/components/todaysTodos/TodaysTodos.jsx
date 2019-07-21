@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Icon, Table } from "antd";
-import { todoDeleter, todoApprover, todoEditor, orderByAscending } from "../HelperFunctions";
+import { todoDeleter, todoApprover, todoEditor, onlyGetTodosForToday } from "../HelperFunctions";
 import "./todaysTodos.css";
 
 const TodaysTodos = () => {
     const allLocalTodos = JSON.parse(localStorage.getItem("Todos")) || '';
 
-    const todaysTodos = allLocalTodos.filter(todos => todos.date === (new Date().toISOString().split('T')[0])) || '';
+    const todaysTodos = onlyGetTodosForToday(allLocalTodos) || '';
     const [todos, setTodos] = useState([...todaysTodos]);
 
     // Deleting a note.
@@ -32,7 +32,7 @@ const TodaysTodos = () => {
             render: (text, record) =>
                 <>
                     <Icon
-                        onClick={() => setTodos(todoApprover(record.id))}
+                        onClick={() => setTodos(onlyGetTodosForToday(todoApprover(record.id)))}
                         id="icon-complete"
                         type="check-circle"
                         theme="twoTone"

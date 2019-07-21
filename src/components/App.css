@@ -1,11 +1,13 @@
 @import '~antd/dist/antd.css';
-html, body {
+html,
+body {
     font-family: 'Bangers', cursive;
     height: 100%;
     margin: 0px;
     background-color: #ffffff;
     text-decoration: none;
     letter-spacing: 0.8px;
+    overflow: hidden;
 }
 
 a {
@@ -26,8 +28,8 @@ li {
     animation: slide-out-right 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
 
-.task-done{
-    background: linear-gradient(white 49%, black 51%, black 0, white 0px);
+.task-done {
+    background: linear-gradient(#ffffff00 49%, black 51%, black 0, #ffffff00 0px);
 }
 
 .App {
@@ -86,6 +88,7 @@ li {
         opacity: 1;
     }
 }
+
 
 /**
  * ----------------------------------------
