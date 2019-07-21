@@ -17,6 +17,7 @@ const Newtask = () => {
     // basic validation
     if (todoTitle.length > 0 && todoDate !== null) {
       const newTodo = {
+        id: todos.length + 1,
         title: todoTitle,
         completed: false,
         date: todoDate,
@@ -27,6 +28,8 @@ const Newtask = () => {
       setTodoTitle('');
       setTodoDate(null);
       setRealDate(null);
+    }else{
+      // TODO: Inform the client about validation
     }
   };
 

@@ -3,6 +3,7 @@ import { Icon, Table, Button } from "antd";
 
 const TodaysTodos = () => {
     const allLocalTodos = JSON.parse(localStorage.getItem("Todos")) || '';
+    console.log(allLocalTodos);
     const [todos, setTodos] = useState([...allLocalTodos]);
 
     const handleDelete = () => {
