@@ -10,7 +10,7 @@ const AllTodos = () => {
         todos(null)
     }
     return (
-        <div>
+        <main>
             {todos.map(({ title, complete, date }, i) => (
                 <div
                     key={title}
@@ -40,7 +40,7 @@ const AllTodos = () => {
                     />
                 </div>
             ))}
-        </div>
+        </main>
     );
 };
 

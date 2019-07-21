@@ -40,14 +40,14 @@ const Newtask = () => {
   }
 
   return (
-    <div id="new-todo-content">
+    <main id="new-todo-content">
       <h1>Enter your todo</h1>
 
       <Input id="form-input" name="todo-titel" value={todoTitle} placeholder="Todo" onChange={onInputChange} /> <br />
       <DatePicker id="form-input" onChange={onDateChange} value={realDate} format={"YYYY-MM-DD"} /> <br />
       <Button type="primary" onClick={handleSubmit}>Create</Button>
 
-    </div>
+    </main>
   );
 };
 

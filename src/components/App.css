@@ -25,8 +25,9 @@ li {
     font-size: 18px;
 }
 
-.App div:nth-child(2) {
+.App main {
     width: 100%;
+    font-family: 'Open Sans', sans-serif;
     -webkit-animation: slide-in-blurred-top 0.5s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
     animation: slide-in-blurred-top 0.5s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
 }

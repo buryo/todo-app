@@ -52,7 +52,7 @@ const TodaysTodos = () => {
     ];
 
     return (
-        <div>
+        <main>
             {todos.map(({ title, complete, date }, i) => (
                 <div
                     key={title}
@@ -81,7 +81,7 @@ const TodaysTodos = () => {
             ))}
 
             <Table columns={columns} dataSource={data} />
-        </div>
+        </main>
     );
 };
 
