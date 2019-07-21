@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Icon, Table, Button } from "antd";
+import { Icon, Table } from "antd";
+import { todoDeleter } from "../HelperFunctions";
 import "./todaysTodos.css";
 
 const TodaysTodos = () => {
@@ -24,8 +25,9 @@ const TodaysTodos = () => {
     //     },
     // ];
 
-    const consoleLog = () => {
-        console.log('Clicked');
+    const deleteHandler = (e, id) => {
+        e.currentTarget.parentNode.parentNode.classList.add('deleting');
+        setTimeout(function () { setTodos(todoDeleter(id)); }, 500);
     }
 
     // Structure of columns
@@ -41,23 +43,29 @@ const TodaysTodos = () => {
         {
             title: 'Action',
             dataIndex: '',
-            render: () =>
+            render: (text, record) =>
                 <>
-                    <a onClick={consoleLog} id="icon-complete">
-                        <Icon
-                            type="check-circle"
-                            theme="twoTone"
-                            twoToneColor="#52c41a"
-                        />
-                    </a>
-                    
-                    <a onClick={consoleLog} id="icon-delete">
-                        <Icon
-                            type="delete"
-                            theme="twoTone"
-                            twoToneColor="#ff0000"
-                        />
-                    </a>
+                    <Icon
+                        onClick={(e) => deleteHandler(e, record.id)}
+                        id="icon-complete"
+                        type="check-circle"
+                        theme="twoTone"
+                        twoToneColor="#52c41a"
+                    />
+                    <Icon
+                        onClick={(e) => deleteHandler(e, record.id)}
+                        id="icon-edit"
+                        type="edit"
+                        theme="twoTone"
+                        twoToneColor="#fbcb2f"
+                    />
+                    <Icon
+                        onClick={(e) => deleteHandler(e, record.id)}
+                        id="icon-delete"
+                        type="delete"
+                        theme="twoTone"
+                        twoToneColor="#ff0000"
+                    />
                 </>
             ,
         }
@@ -65,34 +73,7 @@ const TodaysTodos = () => {
 
     return (
         <main>
-            {/* {todos.map(({ id, title, complete, date }, i) => (
-                <div
-                    key={id}
-                    // onClick={() => toggleComplete(i)}
-                    style={{
-                        textDecoration: complete ? "line-through" : ""
-                    }}
-                >
-                    {`${title} - Date: ${date}`}
-
-                    <a href="/">
-                        <Icon
-                            type="check-circle"
-                            theme="twoTone"
-                            twoToneColor="#52c41a"
-                        />
-                    </a>
-
-                    <Icon
-                        type="delete"
-                        theme="twoTone"
-                        twoToneColor="#ff0000"
-                        onClick={handleDelete}
-                    />
-                </div>
-            ))} */}
-
-            <Table pagination={{ defaultPageSize: 10 }} rowKey="id" columns={columns} dataSource={todos} />
+            <Table rowClassName={ (record, index) => { return record.completed ? 'task-done' : '' }   } pagination={{ defaultPageSize: 10 }} rowKey="id" columns={columns} dataSource={todos} />
         </main>
     );
 };

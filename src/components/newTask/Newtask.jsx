@@ -29,9 +29,9 @@ const Newtask = () => {
       const newTodo = {
         id: lastTodo.id + 1,
         title: todoTitle,
-        completed: false,
-        date: todoDate
-      };
+        completed: true,
+        date: todoDate,
+      }
 
       setTodos([newTodo, ...todos]);
       localStorage.setItem("Todos", JSON.stringify([newTodo, ...todos]));
