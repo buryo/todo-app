@@ -1,6 +1,5 @@
 @import '~antd/dist/antd.css';
-html,
-body {
+html, body {
     font-family: 'Bangers', cursive;
     height: 100%;
     margin: 0px;
@@ -16,6 +15,19 @@ a {
 
 li {
     list-style-type: none;
+}
+
+.anticon {
+    font-size: 16px;
+}
+
+.deleting {
+    -webkit-animation: slide-out-right 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: slide-out-right 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+.task-done{
+    background: linear-gradient(white 49%, black 51%, black 0, white 0px);
 }
 
 .App {
@@ -72,5 +84,37 @@ li {
         -webkit-filter: blur(0);
         filter: blur(0);
         opacity: 1;
+    }
+}
+
+/**
+ * ----------------------------------------
+ * animation slide-out-right
+ * ----------------------------------------
+ */
+
+@-webkit-keyframes slide-out-right {
+    0% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: translateX(1000px);
+        transform: translateX(1000px);
+        opacity: 0;
+    }
+}
+
+@keyframes slide-out-right {
+    0% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: translateX(1000px);
+        transform: translateX(1000px);
+        opacity: 0;
     }
 }

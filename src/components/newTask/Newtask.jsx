@@ -27,7 +27,7 @@ const Newtask = () => {
       const newTodo = {
         id: lastTodo.id + 1,
         title: todoTitle,
-        completed: false,
+        completed: true,
         date: todoDate,
       }
 
