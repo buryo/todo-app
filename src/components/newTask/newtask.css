@@ -1,3 +1,14 @@
-#new-todo-content #form-input {
+/* #new-todo-content #form-input {
     margin-bottom: 14px;
+} */
+
+
+.datepicker{
+margin-left: 40%;
+margin-top: 1em;
 }
+
+.datepicker-button{
+    margin-left: 1em;
+}
+

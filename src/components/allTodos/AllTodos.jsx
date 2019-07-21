@@ -13,10 +13,10 @@ const AllTodos = () => {
     // the function to filter trough the todos state and remove unmatching id and proceed to set the localStorage to new adjusted object
       
     const handleDelete = id => {
-      const matchTodo = todos.filter(todo => todo.id !== id) 
-      setTodos(matchTodo)
+      const newTodos = todos.filter(todo => todo.id !== id) 
+      setTodos(newTodos)
 
-      localStorage.setItem('Todos', JSON.stringify(matchTodo));
+      localStorage.setItem('Todos', JSON.stringify(newTodos));
 
     };
     
