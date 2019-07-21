@@ -16,8 +16,16 @@ const Newtask = () => {
   const handleSubmit = () => {
     // basic validation
     if (todoTitle.length > 0 && todoDate !== null) {
+      let lastTodo = {};
+      if (todos.length > 0) {
+        lastTodo = todos.reduce((prev, current) => (prev.id > current.id) ? prev : current);
+      }else{
+        lastTodo.id = 0;
+      }
+      // Get last Todo's ID
+
       const newTodo = {
-        id: todos.length + 1,
+        id: lastTodo.id + 1,
         title: todoTitle,
         completed: false,
         date: todoDate,

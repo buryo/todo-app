@@ -11,9 +11,9 @@ const AllTodos = () => {
     }
     return (
         <main>
-            {todos.map(({ title, complete, date }, i) => (
+            {todos.map(({ id, title, complete, date }, i) => (
                 <div
-                    key={title}
+                    key={id}
                     // onClick={() => toggleComplete(i)}
                     style={{
                         textDecoration: complete ? "line-through" : ""

@@ -1,62 +1,73 @@
 import React, { useState } from "react";
 import { Icon, Table, Button } from "antd";
+import "./todaysTodos.css";
 
 const TodaysTodos = () => {
     const allLocalTodos = JSON.parse(localStorage.getItem("Todos")) || '';
-    console.log(allLocalTodos);
-    const [todos, setTodos] = useState([...allLocalTodos]);
 
-    const handleDelete = () => {
-        todos(null)
+    const todaysTodos = allLocalTodos.filter(todos => todos.date === new Date().toISOString().split('T')[0]) || '';
+    const [todos, setTodos] = useState([...todaysTodos]);
+
+    // Example data structure
+    // const data = [
+    //     {
+    //         key: '1',
+    //         todo: 'Bring dog outside',
+    //         date: '2019-07-02',
+    //         complete: 'No',
+    //     },
+    //     {
+    //         key: '2',
+    //         todo: 'Bring dog outside',
+    //         date: '2019-07-02',
+    //         complete: 'No',
+    //     },
+    // ];
+
+    const consoleLog = () => {
+        console.log('Clicked');
     }
 
-    const data = [
-        {
-            key: '1',
-            todo: 'Bring dog outside',
-            date: '2019-07-02',
-            complete: 'No',
-        },
-        {
-            key: '2',
-            todo: 'Bring dog outside',
-            date: '2019-07-02',
-            complete: 'No',
-        },
-        {
-            key: '3',
-            todo: 'Bring dog outside',
-            date: '2019-07-02',
-            complete: 'No',
-        },
-        {
-            key: '4',
-            todo: 'Bring dog outside',
-            date: '2019-07-02',
-            complete: 'No',
-        },
-    ];
-
+    // Structure of columns
     const columns = [
         {
             title: 'Todo',
-            dataIndex: 'todo',
+            dataIndex: 'title',
         },
         {
             title: 'Date',
             dataIndex: 'date',
         },
         {
-            title: 'Complete',
-            dataIndex: 'complete',
-        },
+            title: 'Action',
+            dataIndex: '',
+            render: () =>
+                <>
+                    <a onClick={consoleLog} id="icon-complete">
+                        <Icon
+                            type="check-circle"
+                            theme="twoTone"
+                            twoToneColor="#52c41a"
+                        />
+                    </a>
+                    
+                    <a onClick={consoleLog} id="icon-delete">
+                        <Icon
+                            type="delete"
+                            theme="twoTone"
+                            twoToneColor="#ff0000"
+                        />
+                    </a>
+                </>
+            ,
+        }
     ];
 
     return (
         <main>
-            {todos.map(({ title, complete, date }, i) => (
+            {/* {todos.map(({ id, title, complete, date }, i) => (
                 <div
-                    key={title}
+                    key={id}
                     // onClick={() => toggleComplete(i)}
                     style={{
                         textDecoration: complete ? "line-through" : ""
@@ -79,9 +90,9 @@ const TodaysTodos = () => {
                         onClick={handleDelete}
                     />
                 </div>
-            ))}
+            ))} */}
 
-            <Table columns={columns} dataSource={data} />
+            <Table pagination={{ defaultPageSize: 10 }} rowKey="id" columns={columns} dataSource={todos} />
         </main>
     );
 };
