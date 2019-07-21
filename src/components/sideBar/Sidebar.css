@@ -11,6 +11,7 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    box-shadow: 0 1px 8px #04b8a894;
 }
 
 .sidebar-header {
